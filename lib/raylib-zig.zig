@@ -1216,7 +1216,7 @@ pub fn loadFileData(fileName: [:0]const u8) ![]u8 {
     var bytesRead: i32 = 0;
     var res: []u8 = undefined;
 
-    const ptr = cdef.LoadFileData(@as([*c]const u8, @ptrCast(fileName)), @as([*c]c_uint, @ptrCast(&bytesRead)));
+    const ptr = cdef.LoadFileData(@as([*c]const u8, @ptrCast(fileName)), @as([*c]c_int, @ptrCast(&bytesRead)));
     if (ptr == 0) return RaylibError.GenericError;
 
     res.ptr = @as([*]u8, @ptrCast(ptr));
